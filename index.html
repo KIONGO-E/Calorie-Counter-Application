@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <img src="https://logo.com/view/logo_384ff1c5-595e-4696-b38b-3a4375835ec4" alt="Logo">
+    <h1>Calorie Calculator</h1>
+  </header>
+  <div class="container">
+    <div id="calorieForm">
+      <label for="foodName">Food Name:</label>
+      <input type="text" id="foodName" required>
+      <label for="caloriesPerServing">Calories per Serving:</label>
+      <input type="number" id="caloriesPerServing" required>
+      <label for="servings">Servings:</label>
+      <input type="number" id="servings" required>
+      <button onclick="calculateCalories()">Calculate Total Calories</button>
+      <p id="totalCalories"></p>
+    </div>
+    <div id="goalForm">
+      <label for="calorieGoal">Set Calorie Goal:</label>
+      <input type="number" id="calorieGoal" required>
+      <button onclick="setCalorieGoal()">Set Goal</button>
+      <p id="goalStatus"></p>
+    </div>
+    <div id="commentsSection">
+        <h2>Comments</h2>
+        <ul id="commentsList"></ul>
+        <textarea id="commentText" rows="4" cols="50" placeholder="Add a comment"></textarea>
+        <button onclick="addComment()">Add Comment</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+  </html>
