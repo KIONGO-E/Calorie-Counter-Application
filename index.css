@@ -1,37 +1,69 @@
-/* Reset default margin and padding */
 body, h1, h2, ul {
+  background-color: #DBE5BD;
   margin: 0;
   padding: 0;
+  font-family: 'Lora', serif;
 }
 
-/* Basic styling for the header */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #ccc;
-}
-
-/* Styling for the logo image */
-header img {
-  width: 100px; /* Adjust size as needed */
-  height: auto;
-  margin-right: 10px;
-}
-
-/* Styling for the main content area */
 .container {
-  max-width: 800px; /* Adjust max-width as needed */
+  max-width: 800px; 
+  margin: 20px auto; 
+  padding: 0 20px; 
+}
+
+
+header {
+  background-color: #DBE5BD; 
+  padding: 20px; 
+  position: relative; 
+}
+
+
+.logo-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto; 
+}
+
+
+#headerContainer img {
+  width: 100%; 
+  height: auto; 
+  display: block; 
+}
+
+
+h1 {
+  text-align: center; 
+  margin: 20px 0; 
+  color: #54AF6C;
+}
+
+
+#pageTitle {
+  margin-bottom: 20px;
+  text-align: center; 
+}
+
+
+.centered-text {
+  text-align: center;
+  margin-top: 10px; 
+  color: #54AF6C;
+}
+
+
+.container {
+  max-width: 800px; 
   margin: 20px auto;
   padding: 20px;
 }
 
-/* Styling for form elements */
+
 label {
   display: block;
   margin-bottom: 5px;
+  color: #54AF6C;
 }
 
 input[type="text"],
@@ -39,25 +71,31 @@ input[type="number"],
 textarea {
   width: 100%;
   padding: 8px;
+  border-radius: 10px;
+  resize: vertical; 
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #CFE7D0;
 }
 
 button {
+  font-family: 'Lora','Sans Serif';
   padding: 8px 16px;
   border: none;
-  background-color: #007bff;
-  color: #fff;
+  border-radius: 20px;
+  background-color: #8DD96C;
+  color: #CFE7D0;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #54AF6C;
+  transition-duration: 0.3s;
 }
 
-/* Styling for comments section */
+
 #commentsSection {
   margin-top: 20px;
+  color: #54AF6C;
 }
 
 ul {
