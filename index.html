@@ -1,48 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calorie Calculator</title>
-  <link rel="stylesheet" href="index.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
-    <div class="logo-container" id="headerContainer" >
-    <img src="resources/narturitum-calorie-counter-high-resolution-logo-transparent.png" alt="Calorie Counter Logo">
+    <div class="logo-container" id="headerContainer">
+      <img src="resources/narturitum-calorie-counter-high-resolution-logo-transparent.png" alt="Calorie Counter Logo" />
     </div>
     <h1>Narturitum Calorie Calculator</h1>
     <div class="centered-text">
-      <p>Narturitum tracks your daily caloric intake and ensures you have complete control of what you eat</p>
+      <p>
+        Narturitum tracks your caloric intake and ensures you have complete control of what you eat
+      </p>
     </div>
-    </header>
+  </header>
   <div class="container">
     <div id="calorieForm">
       <label for="foodName">Food Name:</label>
-      <input type="text" id="foodName" required>
+      <input type="text" id="foodName" required />
       <label for="caloriesPerServing">Calories per Serving:</label>
-      <input type="number" id="caloriesPerServing" required>
+      <p id="caloriesPerServing"></p> <!-- Display calories here -->
       <label for="servings">Servings:</label>
-      <input type="number" id="servings" required>
+      <input type="number" id="servings" required />
       <button onclick="calculateCalories()">Calculate Total Calories</button>
       <p id="totalCalories"></p>
     </div>
     <div id="goalForm">
       <label for="calorieGoal">Set Calorie Goal:</label>
-      <input type="number" id="calorieGoal" required>
+      <input type="number" id="calorieGoal" required />
       <button onclick="setCalorieGoal()">Set Goal</button>
       <p id="goalStatus"></p>
     </div>
     <div id="commentsSection">
-        <h2>Comments</h2>
-        <ul id="commentsList"></ul>
-        <textarea id="commentText" rows="4" cols="50" placeholder="Add your comments on your food down below ❤️"></textarea>
-        <button onclick="addComment()">Add Comment</button>
-      </div>
+      <h2>Comments</h2>
+      <ul id="commentsList"></ul>
+      <textarea id="commentText" rows="4" cols="50" placeholder="Add your comments on your food down below ❤️"></textarea>
+      <button onclick="addComment()">Add Comment</button>
     </div>
-    <script src="index.js"></script>
-  </body>
-  </html>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>

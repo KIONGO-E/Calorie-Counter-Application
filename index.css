@@ -1,3 +1,4 @@
+/* Updated CSS for rounded text bubbles */
 body, h1, h2, ul {
   background-color: #DBE5BD;
   margin: 0;
@@ -11,13 +12,11 @@ body, h1, h2, ul {
   padding: 0 20px; 
 }
 
-
 header {
   background-color: #DEE7C3;
   padding: 20px; 
   position: relative; 
 }
-
 
 .logo-container {
   width: 100%;
@@ -25,13 +24,11 @@ header {
   margin: 0 auto; 
 }
 
-
 #headerContainer img {
   width: 100%; 
   height: auto; 
   display: block; 
 }
-
 
 h1 {
   text-align: center; 
@@ -40,13 +37,6 @@ h1 {
   background-color: #DEE7C3;
 }
 
-
-#pageTitle {
-  margin-bottom: 20px;
-  text-align: center; 
-}
-
-
 .centered-text {
   text-align: center;
   margin-top: 10px; 
@@ -54,13 +44,11 @@ h1 {
   background-color: #DEE7C3;
 }
 
-
 .container {
   max-width: 800px; 
   margin: 20px auto;
   padding: 20px;
 }
-
 
 label {
   display: block;
@@ -71,7 +59,7 @@ label {
 input[type="text"],
 input[type="number"],
 textarea {
-  width: 100%;
+  width: calc(100% - 20px); /* Adjusted width to account for padding */
   padding: 8px;
   border-radius: 10px;
   resize: vertical; 
@@ -94,7 +82,6 @@ button:hover {
   transition-duration: 0.3s;
 }
 
-
 #commentsSection {
   margin-top: 20px;
   color: #54AF6C;
@@ -104,10 +91,26 @@ ul {
   list-style-type: none;
 }
 
+/* Rounded text bubble */
+.calories-bubble {
+  display: none; /* Initially hide the bubble */
+  position: absolute;
+  background-color: #8DD96C;
+  color: #CFE7D0;;
+  border-radius: 15px; /* Adjust border-radius to make it rounded */
+  padding: 8px 12px; /* Adjust padding as needed */
+  z-index: 1;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 10px;
+  border: 1px solid #54AF6C; /* Add border for better visibility */
+}
+
 /* Responsive styles */
 @media screen and (max-width: 600px) {
-  /* Adjust styles for smaller screens if needed */
   header img {
     width: 80px;
   }
+
+  /* Adjust styles for smaller screens if needed */
 }
