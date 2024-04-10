@@ -13,7 +13,7 @@ body, h1, h2, ul {
 
 
 header {
-  background-color: #DBE5BD; 
+  background-color: #DEE7C3;
   padding: 20px; 
   position: relative; 
 }
@@ -37,6 +37,7 @@ h1 {
   text-align: center; 
   margin: 20px 0; 
   color: #54AF6C;
+  background-color: #DEE7C3;
 }
 
 
@@ -50,6 +51,7 @@ h1 {
   text-align: center;
   margin-top: 10px; 
   color: #54AF6C;
+  background-color: #DEE7C3;
 }
 
 
