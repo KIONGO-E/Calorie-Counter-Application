@@ -1,57 +1,73 @@
-* {
-    margin: 0;
-    font-family: Lora, Arial, sans-serif;
-    box-sizing: border-box;
-  }
+/* Reset default margin and padding */
+body, h1, h2, ul {
+  margin: 0;
+  padding: 0;
+}
 
+/* Basic styling for the header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
 
-body {
-    font-family: Lora, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #DBE5BD;
+/* Styling for the logo image */
+header img {
+  width: 100px; /* Adjust size as needed */
+  height: auto;
+  margin-right: 10px;
+}
+
+/* Styling for the main content area */
+.container {
+  max-width: 800px; /* Adjust max-width as needed */
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Styling for form elements */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for comments section */
+#commentsSection {
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  /* Adjust styles for smaller screens if needed */
+  header img {
+    width: 80px;
   }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #54AF6C;
-  }
-  
-  .header img {
-    width: 50px;
-    margin-right: 10px;
-  }
-  
-  .h1 {
-    font-family: Lora, Arial, sans-serif;
-    font-size: large;
-    flex: none;
-    margin: 0;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #DBE5BD;
-  }
-  
-  .input, button, textarea {
-    margin-bottom: 10px;
-  }
-  
-  .button {
-    cursor: pointer;
-  }
-  
-  .ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .li {
-    margin-bottom: 10px;
-  }
-  
+}
