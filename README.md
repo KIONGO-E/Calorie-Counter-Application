@@ -6,7 +6,7 @@ This is a simple web application for tracking daily caloric intake and managing 
 ## Features
 
 - Calculate total calories for a food item based on servings and calories per serving.
-- Set a calorie goal and check if it's met.
+- Set a calorie goal.
 - Add comments about food items.
 
 ## Technologies Used
