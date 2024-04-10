@@ -1,7 +1,7 @@
 // Function to fetch food data from Edamam API
 async function fetchFoodData(foodName) {
-  const appId = 'e0e7618c'; // Actual Edamam application ID
-  const appKey = '9ad7c51a57dec5a76b151d40a51bb250'; // Actual Edamam application key
+  const appId = 'e0e7618c'; // Edamam application ID
+  const appKey = '9ad7c51a57dec5a76b151d40a51bb250'; // Edamam application key
   const apiUrl = `https://api.edamam.com/api/food-database/v2/parser?ingr=${foodName}&app_id=${appId}&app_key=${appKey}`;
 
   try {
@@ -36,9 +36,10 @@ async function updateCaloriesPerServing() {
     const foodData = await fetchFoodData(foodName);
     if (foodData && foodData.parsed && foodData.parsed.length > 0) {
       const calories = foodData.parsed[0].food.nutrients.ENERC_KCAL; // Extract calories per serving
-      document.getElementById('caloriesPerServing').textContent = `Calories per Serving: ${calories}`;
+      // Update the textContent directly without the "Calories per Serving:" prefix
+      document.getElementById('caloriesPerServing').textContent = `${calories}`;
     } else {
-      document.getElementById('caloriesPerServing').textContent = 'Calories per Serving: N/A';
+      document.getElementById('caloriesPerServing').textContent = 'N/A';
       console.error('Food data not found.');
     }
   } catch (error) {
@@ -49,19 +50,30 @@ async function updateCaloriesPerServing() {
 // Function to calculate total calories
 function calculateCalories() {
   // Get input values
-  const caloriesPerServing = parseFloat(document.getElementById('caloriesPerServing').textContent.split(':')[1].trim());
+  const caloriesPerServing = parseFloat(document.getElementById('caloriesPerServing').textContent.trim());
   const servings = parseFloat(document.getElementById('servings').value);
+  const calorieGoal = parseFloat(document.getElementById('calorieGoal').value);
 
   // Check for valid input
-  if (isNaN(caloriesPerServing) || isNaN(servings) || caloriesPerServing <= 0 || servings <= 0) {
-    alert('Please enter valid values for Calories per Serving and Servings.');
+  if (isNaN(caloriesPerServing) || isNaN(servings) || isNaN(calorieGoal) || caloriesPerServing <= 0 || servings <= 0 || calorieGoal <= 0) {
+    alert('Please enter valid values for Calories per Serving, Servings, and Calorie Goal.');
     return;
   }
 
   // Calculate total calories
   const totalCalories = caloriesPerServing * servings;
   document.getElementById('totalCalories').textContent = `Total Calories: ${totalCalories}`;
+
+  // Calculate and display calorie difference
+  const calorieDifference = totalCalories - calorieGoal;
+  if (calorieDifference > 0) {
+    document.getElementById('calorieDifference').textContent = `You exceeded your goal by ${calorieDifference} calories.`;
+  } else {
+    document.getElementById('calorieDifference').textContent = ''; // Clear previous difference if not exceeded
+  }
 }
+
+
 
 // Function to set calorie goal
 function setCalorieGoal() {

@@ -23,14 +23,14 @@ This is a simple web application for tracking daily caloric intake and managing 
 - `db.json`: JSON file to store data 
 
 ## Usage
+1. Navigate to the required directory.
+2. Clone the repository to your local environment. 
+3. Navigate to your repository. 
+4. Open the repository using your desired text editor such as VScode.
+5. Open `index.html` in a web browser.
+6. Enter food details in the form fields.
+7. Click the appropriate buttons to calculate calories, set goals, and add comments.
 
-1. Open `index.html` in a web browser.
-2. Enter food details in the form fields.
-3. Click the appropriate buttons to calculate calories, set goals, and add comments.
-
-## Setup
-
-No special setup is required to run this web app. Simply open `index.html` in a web browser.
 
 ## Credits
 
@@ -40,7 +40,7 @@ No special setup is required to run this web app. Simply open `index.html` in a 
 ## Contact Information
 
 You can contact me at:-
-1.Email --ekiongo13@gmail.com
+1. Email --ekiongo13@gmail.com
 
 ## License
 
