@@ -73,12 +73,7 @@ function calculateCalories() {
   }
 }
 
-
-
-// Function to set calorie goal
-function setCalorieGoal() {
-  // Your setCalorieGoal implementation here
-}
+// Function to set calorie goal (if needed)
 
 // Function to add comment
 function addComment() {
@@ -88,10 +83,26 @@ function addComment() {
     return;
   }
 
-  const newComment = { text: commentText, timestamp: new Date().toLocaleString() };
+  const newComment = { id: generateCommentId(), text: commentText, timestamp: new Date().toLocaleString() };
   commentsArray.push(newComment);
   refreshComments();
   document.getElementById('commentText').value = ''; // Clear input after adding comment
+}
+
+// Function to generate unique comment ID
+function generateCommentId() {
+  return Math.floor(Math.random() * 1000000); // Example ID generation
+}
+
+// Function to delete a comment
+async function deleteComment(commentId) {
+  try {
+    // Simulate deletion process
+    commentsArray = commentsArray.filter(comment => comment.id !== commentId);
+    refreshComments(); // Update the UI after deletion
+  } catch (error) {
+    console.error('Error deleting comment:', error);
+  }
 }
 
 // Function to refresh comments section
@@ -102,6 +113,17 @@ function refreshComments() {
   commentsArray.forEach(comment => {
     const li = document.createElement('li');
     li.textContent = `${comment.text} - ${comment.timestamp}`;
+    
+    // Add a delete button for each comment
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete-comment-btn'); // Add a class for event handling
+    deleteBtn.dataset.commentId = comment.id; // Set data attribute for comment id
+    deleteBtn.addEventListener('click', () => {
+      deleteComment(comment.id); // Call deleteComment function on button click
+    });
+    li.appendChild(deleteBtn);
+
     commentsList.appendChild(li);
   });
 }
@@ -109,7 +131,12 @@ function refreshComments() {
 // Global array to store comments
 let commentsArray = [];
 
-// Initialize the comments section with existing comments (if any)
+// Sample comments for testing (remove in production)
+commentsArray.push({ id: 1, text: 'First comment', timestamp: new Date().toLocaleString() });
+commentsArray.push({ id: 2, text: 'Second comment', timestamp: new Date().toLocaleString() });
+commentsArray.push({ id: 3, text: 'Third comment', timestamp: new Date().toLocaleString() });
+
+// Initialize the comments section with existing comments
 refreshComments();
 
 // Add event listener for food name input to update calories per serving
