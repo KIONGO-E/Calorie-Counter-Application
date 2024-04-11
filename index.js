@@ -1,7 +1,14 @@
+
 // Function to fetch food data from Edamam API
 async function fetchFoodData(foodName) {
-  const appId = 'e0e7618c'; // Edamam application ID
-  const appKey = '9ad7c51a57dec5a76b151d40a51bb250'; // Edamam application key
+  const appId = 'e0e7618c'; // Edamam application ID from .env
+  const appKey = '9ad7c51a57dec5a76b151d40a51bb250'; // Edamam application key from .env
+
+  if (!appId || !appKey) {
+    console.error('Edamam API credentials not found in environment variables.');
+    return null;
+  }
+
   const apiUrl = `https://api.edamam.com/api/food-database/v2/parser?ingr=${foodName}&app_id=${appId}&app_key=${appKey}`;
 
   try {
@@ -23,6 +30,7 @@ async function fetchFoodData(foodName) {
     return null;
   }
 }
+
 
 // Function to update calories per serving based on food input
 async function updateCaloriesPerServing() {
