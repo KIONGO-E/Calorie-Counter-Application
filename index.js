@@ -36,8 +36,9 @@ async function updateCaloriesPerServing() {
     const foodData = await fetchFoodData(foodName);
     if (foodData && foodData.parsed && foodData.parsed.length > 0) {
       const calories = foodData.parsed[0].food.nutrients.ENERC_KCAL; // Extract calories per serving
-      // Update the textContent directly without the "Calories per Serving:" prefix
-      document.getElementById('caloriesPerServing').textContent = `${calories}`;
+      const caloriesPerServingElement = document.getElementById('caloriesPerServing');
+      caloriesPerServingElement.textContent = `${calories}`;
+      caloriesPerServingElement.classList.add('highlight'); // Add highlight class
     } else {
       document.getElementById('caloriesPerServing').textContent = 'N/A';
       console.error('Food data not found.');
@@ -62,18 +63,62 @@ function calculateCalories() {
 
   // Calculate total calories
   const totalCalories = caloriesPerServing * servings;
-  document.getElementById('totalCalories').textContent = `Total Calories: ${totalCalories}`;
+  const totalCaloriesElement = document.getElementById('totalCalories');
+  totalCaloriesElement.textContent = `Total Calories: ${totalCalories}`;
+  totalCaloriesElement.classList.add('highlight'); // Add highlight class
 
   // Calculate and display calorie difference
   const calorieDifference = totalCalories - calorieGoal;
+  const calorieDifferenceElement = document.getElementById('calorieDifference');
   if (calorieDifference > 0) {
-    document.getElementById('calorieDifference').textContent = `You exceeded your goal by ${calorieDifference} calories.`;
+    calorieDifferenceElement.textContent = `You exceeded your goal by ${calorieDifference} calories.`;
   } else {
-    document.getElementById('calorieDifference').textContent = ''; // Clear previous difference if not exceeded
+    calorieDifferenceElement.textContent = ''; // Clear previous difference if not exceeded
   }
+  calorieDifferenceElement.classList.add('highlight'); // Add highlight class
+
+  // Update the "Calories per Serving" text tab area
+  const caloriesTextTabElement = document.getElementById('caloriesTextTab');
+  caloriesTextTabElement.textContent = `Calories per Serving: ${caloriesPerServing}`;
+  caloriesTextTabElement.classList.add('highlight'); // Add highlight class
 }
 
-// Function to set calorie goal (if needed)
+// Function to log information
+function logInformation() {
+  const mealName = document.getElementById('mealName').value.trim();
+  const caloriesPerServing = parseFloat(document.getElementById('caloriesPerServing').textContent.trim());
+  const servings = parseFloat(document.getElementById('servings').value);
+  const totalCalories = caloriesPerServing * servings;
+
+  // Generate log information HTML
+  const logInfoHTML = `
+    <p>Meal of the Day: ${mealName}</p>
+    <p>Total Calories: ${totalCalories}</p>
+    <p>Calories per Serving: ${caloriesPerServing}</p>
+    <p>You exceeded your goal by ${totalCalories - parseFloat(document.getElementById('calorieGoal').value)} calories.</p>
+  `;
+
+  // Display log tab and populate logged information
+  const logTab = document.getElementById('logTab');
+  const loggedInfoElement = document.getElementById('loggedInfo');
+  loggedInfoElement.innerHTML = logInfoHTML;
+  logTab.style.display = 'block';
+}
+
+// Update calories per serving for meal 1
+async function updateCaloriesPerServing1() {
+  // Fetch and update calories for meal 1
+}
+
+// Calculate calories for meal 1
+function calculateCalories1() {
+  // Calculate and display calories for meal 1
+}
+
+// Log meal information for meal 1
+function logMeal1() {
+  // Log meal information for meal 1
+}
 
 // Function to add comment
 function addComment() {
@@ -89,20 +134,22 @@ function addComment() {
   document.getElementById('commentText').value = ''; // Clear input after adding comment
 }
 
-// Function to generate unique comment ID
-function generateCommentId() {
-  return Math.floor(Math.random() * 1000000); // Example ID generation
+// Function to edit comment
+function editComment(commentId) {
+  const editedText = prompt('Edit your comment:');
+  if (editedText !== null) {
+    const commentIndex = commentsArray.findIndex(comment => comment.id === commentId);
+    if (commentIndex !== -1) {
+      commentsArray[commentIndex].text = editedText;
+      refreshComments(); // Update comments UI
+    }
+  }
 }
 
 // Function to delete a comment
-async function deleteComment(commentId) {
-  try {
-    // Simulate deletion process
-    commentsArray = commentsArray.filter(comment => comment.id !== commentId);
-    refreshComments(); // Update the UI after deletion
-  } catch (error) {
-    console.error('Error deleting comment:', error);
-  }
+function deleteComment(commentId) {
+  commentsArray = commentsArray.filter(comment => comment.id !== commentId);
+  refreshComments(); // Update the UI after deletion
 }
 
 // Function to refresh comments section
@@ -114,11 +161,21 @@ function refreshComments() {
     const li = document.createElement('li');
     li.textContent = `${comment.text} - ${comment.timestamp}`;
     
+    // Add an edit button for each comment
+    const editBtn = document.createElement('button');
+    editBtn.textContent = 'Edit';
+    editBtn.classList.add('edit-comment-btn');
+    editBtn.dataset.commentId = comment.id;
+    editBtn.addEventListener('click', () => {
+      editComment(comment.id); // Call editComment function on button click
+    });
+    li.appendChild(editBtn);
+
     // Add a delete button for each comment
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
-    deleteBtn.classList.add('delete-comment-btn'); // Add a class for event handling
-    deleteBtn.dataset.commentId = comment.id; // Set data attribute for comment id
+    deleteBtn.classList.add('delete-comment-btn');
+    deleteBtn.dataset.commentId = comment.id;
     deleteBtn.addEventListener('click', () => {
       deleteComment(comment.id); // Call deleteComment function on button click
     });
@@ -128,16 +185,31 @@ function refreshComments() {
   });
 }
 
+// Function to generate unique comment ID
+function generateCommentId() {
+  return Math.floor(Math.random() * 1000000); // Example ID generation
+}
+
+// Function to update summary tab
+function updateSummary() {
+  const mealName = document.getElementById('mealName').value.trim();
+  const caloriesPerServing = parseFloat(document.getElementById('caloriesPerServing').textContent.trim());
+  const servings = parseFloat(document.getElementById('servings').value);
+  const totalCalories = caloriesPerServing * servings;
+
+  const summaryTab = document.getElementById('summaryTab');
+  summaryTab.textContent = `Meal of the Day: ${mealName}\nTotal Calories: ${totalCalories}`;
+
+  // Update the "Calories per Serving" text tab area
+  document.getElementById('caloriesTextTab').textContent = `Calories per Serving: ${caloriesPerServing}`;
+}
+
 // Global array to store comments
 let commentsArray = [];
-
-// Sample comments for testing (remove in production)
-commentsArray.push({ id: 1, text: 'First comment', timestamp: new Date().toLocaleString() });
-commentsArray.push({ id: 2, text: 'Second comment', timestamp: new Date().toLocaleString() });
-commentsArray.push({ id: 3, text: 'Third comment', timestamp: new Date().toLocaleString() });
 
 // Initialize the comments section with existing comments
 refreshComments();
 
-// Add event listener for food name input to update calories per serving
+// Add event listeners
 document.getElementById('foodName').addEventListener('change', updateCaloriesPerServing);
+document.getElementById('mealName').addEventListener('input', updateSummary);

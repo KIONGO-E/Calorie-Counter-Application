@@ -2,7 +2,9 @@ body, h1, h2, ul {
   background-color: #DBE5BD;
   margin: 0;
   padding: 0;
-  font-family: 'Lora', serif;
+  font-family: 'Lora', 'serif';
+  font-size: larger;
+  font-weight: bolder;
 }
 
 .container {
@@ -12,6 +14,7 @@ body, h1, h2, ul {
 }
 
 header {
+  font-size: larger;
   background-color: #DEE7C3;
   padding: 20px; 
   position: relative; 
@@ -52,16 +55,18 @@ label {
 input[type="text"],
 input[type="number"],
 textarea {
-  width: calc(100% - 20px); /* Adjusted width to account for padding */
-  padding: 8px;
-  border-radius: 10px;
+  font-size: larger;
+  width: calc(100% - 20px); 
+  padding: 20px;
+  border-radius: 21px;
   resize: vertical; 
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border: 1px solid #CFE7D0;
 }
 
 button {
   font-family: 'Lora','Sans Serif';
+  font-size: larger;
   padding: 8px 16px;
   border: none;
   border-radius: 20px;
@@ -84,22 +89,73 @@ ul {
   list-style-type: none;
 }
 
-/* Rounded text bubble */
-.calories-bubble {
-  display: none; /* Initially hide the bubble */
-  position: absolute;
-  background-color: #000;
-  color: #000;
-  border-radius: 15px; /* Adjust border-radius to make it rounded */
-  padding: 8px 12px; /* Adjust padding as needed */
-  z-index: 1;
-  bottom: calc(100% + 10px); /* Adjust bubble position */
-  left: 0;
+.highlight {
+  font-family: 'Lora';
+  font-size: larger;
+  background-color: #54AF6C; 
+  width: calc(100% - 20px); 
+  padding: 8px;
+  border-radius: 10px;
+  resize: vertical; 
   margin-bottom: 10px;
-  border: 1px solid #000; /* Add border for better visibility */
+  border: 1px solid #CFE7D0;
 }
 
-/* Show the bubble when hovering over the calorie display */
+
+.calories-bubble {
+  display: none; 
+  position: absolute;
+  background-color: #54AF6C;
+  color: ;
+  border-radius: 15px; 
+  padding: 8px 12px; 
+  z-index: 1;
+  bottom: calc(100% + 10px); 
+  left: 0;
+  margin-bottom: 10px;
+  border: 5px solid #CFE7D0; 
+}
+
+
 #caloriesPerServing:hover + .calories-bubble {
   display: block;
+}
+
+
+#logTab {
+  background-color: #54AF6C;
+  border: 1px solid #CFE7D0;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#loggedInfo p {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #DBE5BD;
+}
+
+#loggedInfo p:last-child {
+  margin-bottom: 0;
+}
+
+
+button:hover {
+  background-color: #54AF6C;
+  transition-duration: 0.3s;
+}
+
+
+.highlight {
+  font-family: 'Lora';
+  font-size: larger;
+  background-color: #54AF6C;
+  width: calc(100% - 20px);
+  padding: 8px;
+  border-radius: 10px;
+  resize: vertical;
+  margin-bottom: 10px;
+  border: 10 px solid #CFE7D0;
 }

@@ -23,6 +23,8 @@
   </header>
   <div class="container">
     <div id="calorieForm">
+      <label for="mealName">Meal of the Day:</label>
+      <input type="text" id="mealName" required />
       <label for="foodName">Food Name:</label>
       <input type="text" id="foodName" required />
       <label for="servings">Number of Servings:</label>
@@ -33,23 +35,27 @@
         <button onclick="setCalorieGoal()">Set Goal</button>
         <p id="goalStatus"></p>
       </div>
-      <label for="caloriesPerServing">Calories per Serving:</label>
-      <p id="caloriesPerServing">0</p> <!-- Display calories here -->
-      <!-- Text bubble for calories -->
+      <label>Calories per Serving:</label>
+      <p id="caloriesPerServing"> </p> 
+    
       <div class="calories-bubble">Calories per Serving</div>
       <button onclick="calculateCalories()">Calculate Total Calories</button>
       <p id="totalCalories"></p>
       <p id="calorieDifference"></p>
+      <p id="caloriesTextTab"></p>
+      <button onclick="logInformation()">Log Information</button> 
     </div>
-
-    <div id="commentsSection">
+<div id="commentsSection">
       <h2>Comments</h2>
       <ul id="commentsList">
-        <!-- Comments will be added dynamically here -->
       </ul>
       <textarea id="commentText" rows="4" cols="50" placeholder="Add your comments on your food down below ❤️"></textarea>
       <button onclick="addComment()">Add Comment</button>
     </div>
+  </div>
+  <div id="logTab" style="display: none;">
+    <h2>Logged Information</h2>
+    <div id="loggedInfo"></div>
   </div>
   <script src="index.js"></script>
 </body>
